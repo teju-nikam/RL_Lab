@@ -1,0 +1,53 @@
+===========================================================================
+EXPERIMENT 2: MARKOV DECISION PROCESS (MDP) MODELING
+ENGINEERING PROBLEM: AUTONOMOUS TEXTILE AGV MATERIAL TRANSPORT
+===========================================================================
+Number of States: 5
+  State 0: Charging_Station
+  State 1: Spinning_Dept
+  State 2: Weaving_Dept
+  State 3: Quality_Inspection
+  State 4: Low_Battery_Warning
+
+Number of Actions: 4
+  Action 0: Move_Next
+  Action 1: Service
+  Action 2: Go_Charge
+  Action 3: Wait_Idle
+
+Discount Factor (gamma): 0.9
+[+] Transition probability matrix verified: All rows sum to 1.0 (Stochastic).
+
+===========================================================================
+ANALYTICAL BELLMAN MATRIX INVERSION RESULTS: V_pi = (I - gamma*P_pi)^(-1) * R_pi
+===========================================================================
+State Name                | Aggressive Policy V(s) | Conservative Policy V(s)
+---------------------------------------------------------------------------
+Charging_Station          |        115.445         |          84.771         
+Spinning_Dept             |        130.117         |          95.855         
+Weaving_Dept              |        172.284         |         103.323         
+Quality_Inspection        |        177.025         |          95.140         
+Low_Battery_Warning       |         85.932         |          59.460         
+---------------------------------------------------------------------------
+
+SAMPLE TRAJECTORY SIMULATION (Conservative Policy, 10 Steps):
+---------------------------------------------------------------------------
+Step 00: State: Charging_Station     -> Action: Move_Next  | Reward:  -1.0 | Next: Spinning_Dept
+Step 01: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Step 02: State: Spinning_Dept        -> Action: Move_Next  | Reward:  -2.0 | Next: Low_Battery_Warning
+Step 03: State: Low_Battery_Warning  -> Action: Go_Charge  | Reward: -10.0 | Next: Charging_Station
+Step 04: State: Charging_Station     -> Action: Move_Next  | Reward:  -1.0 | Next: Spinning_Dept
+Step 05: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Step 06: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Step 07: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Step 08: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Step 09: State: Spinning_Dept        -> Action: Service    | Reward: +15.0 | Next: Spinning_Dept
+Total Discounted Return (gamma=0.90): 39.206
+---------------------------------------------------------------------------
+[+] Visualization saved to 'mdp_network_and_values.png'
+
+CONCLUSION & ENGINEERING INFERENCE:
+1. Formulated a 5-state, 4-action stochastic MDP representing an autonomous factory transport AGV.
+2. Transition matrix stochasticity verified with sum_s' P(s'|s,a) = 1.0 for all pairs.
+3. Analytical solution using matrix inversion (I - gamma*P)^(-1)*R exactly evaluates long-term expected returns.
+4. Conservative policy significantly mitigates the low-battery hazard, proving stability in autonomous manufacturing operations.

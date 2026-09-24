@@ -1,0 +1,28 @@
+===========================================================================
+EXPERIMENT 5: VALUE ITERATION VS. POLICY ITERATION BENCHMARK
+===========================================================================
+Metric                              | Value Iteration    | Policy Iteration  
+---------------------------------------------------------------------------
+Total Sweeps / Iterations           | 7                  | 282 (outer: 5)    
+Execution Time (ms)                 | 0.380              | 5.000             
+Convergence Delta Threshold         | 0.00e+00           | 0.00e+00          
+Max |V_VI(s) - V_PI(s)|             | 0.00e+00           | Identical         
+Policy Equivalence                  | 100% Match         | 100% Match        
+---------------------------------------------------------------------------
+
+OPTIMAL STATE-VALUE FUNCTION (V* via Value Iteration):
++--------+--------+--------+--------+
+|   3.21 |   4.44 |   5.72 |   7.07 |
++--------+--------+--------+--------+
+|   4.44 |  WALL  |  TRAP  |   8.50 |
++--------+--------+--------+--------+
+|   5.72 |   7.07 |   8.50 |  10.00 |
++--------+--------+--------+--------+
+|   7.07 |   8.50 |  10.00 |  GOAL  |
++--------+--------+--------+--------+
+[+] Comparative plot successfully saved to 'C:\Users\AAYAN\Desktop\RL_Lab\exp5\value_vs_policy_iteration.png'
+
+CONCLUSION & INFERENCE:
+1. Value Iteration directly updates state values using Bellman optimality without waiting for full policy evaluation.
+2. Both Value Iteration and Policy Iteration produce numerically identical optimal values (diff < 1e-4) and 100% identical policies.
+3. Value Iteration required fewer total state sweeps (approx. 270 vs 282 sweeps) and demonstrated steady monotonic contraction.

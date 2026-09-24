@@ -1,0 +1,32 @@
+======================================================================
+EXPERIMENT 8: SARSA ALGORITHM (ON-POLICY TD CONTROL)
+ENVIRONMENT: CLIFF WALKING (4x12 Grid, 48 States, 4 Actions)
+======================================================================
+Training Episodes: 500 | Alpha: 0.1 | Gamma: 0.99
+----------------------------------------------------------------------
+Episode  50/500 | Epsilon: 0.7783 | Avg Reward (last 50): -2498.2 | Avg Steps: 357.8
+Episode 100/500 | Epsilon: 0.6058 | Avg Reward (last 50): -345.1 | Avg Steps: 101.6
+Episode 150/500 | Epsilon: 0.4715 | Avg Reward (last 50): -134.1 | Avg Steps:  56.8
+Episode 200/500 | Epsilon: 0.3670 | Avg Reward (last 50):  -49.9 | Avg Steps:  32.1
+Episode 250/500 | Epsilon: 0.2856 | Avg Reward (last 50):  -40.1 | Avg Steps:  26.2
+Episode 300/500 | Epsilon: 0.2223 | Avg Reward (last 50):  -25.0 | Avg Steps:  23.0
+Episode 350/500 | Epsilon: 0.1730 | Avg Reward (last 50):  -25.9 | Avg Steps:  21.9
+Episode 400/500 | Epsilon: 0.1347 | Avg Reward (last 50):  -31.8 | Avg Steps:  19.9
+Episode 450/500 | Epsilon: 0.1048 | Avg Reward (last 50):  -29.3 | Avg Steps:  19.4
+Episode 500/500 | Epsilon: 0.0816 | Avg Reward (last 50):  -22.8 | Avg Steps:  18.8
+
+EVALUATION OF LEARNED POLICY (Greedy, epsilon=0):
+----------------------------------------------------------------------
+Total Steps to Goal: 17
+Total Test Reward:   -17.0
+State Sequence Traversed (18 states):
+(3, 0) -> (2, 0) -> (1, 0) -> (0, 0) -> (0, 1) -> (0, 2) -> (0, 3) -> (0, 4) -> (0, 5) -> (0, 6) -> (0, 7) -> (0, 8) -> (0, 9) -> (0, 10) -> (0, 11) -> (1, 11) -> (2, 11) -> (3, 11)
+Actions Taken (17 actions):
+UP -> UP -> UP -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> DOWN -> DOWN -> DOWN
+----------------------------------------------------------------------
+[+] Visualization plot saved to 'C:\Users\AAYAN\Desktop\RL_Lab\exp8\sarsa_cliffwalking.png'
+
+CONCLUSION & INFERENCE:
+1. SARSA is an on-policy TD control algorithm that updates Q based on the action actually executed by the policy.
+2. Because SARSA accounts for its own epsilon-greedy exploratory mistakes, it learns a safer path further away from the cliff edge.
+3. Successfully reached the goal in finite steps without falling into the -100 reward cliff during testing.

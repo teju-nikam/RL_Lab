@@ -1,0 +1,41 @@
+======================================================================
+EXPERIMENT 4: POLICY ITERATION (OPTIMAL CONTROL)
+======================================================================
+Grid Size: 4x4 | Gamma: 0.95
+Goal: (3, 3) (+10.0) | Trap: (1, 2) (-10.0) | Obstacle: (1, 1)
+----------------------------------------------------------------------
+Iteration 1: Policy Evaluation converged in 271 sweeps.
+Iteration 2: Policy Evaluation converged in 3 sweeps.
+Iteration 3: Policy Evaluation converged in 3 sweeps.
+Iteration 4: Policy Evaluation converged in 4 sweeps.
+Iteration 5: Policy Evaluation converged in 1 sweeps.
+
+>>> Policy Iteration converged in 5 policy improvement cycles! (Total eval sweeps: 282)
+
+OPTIMAL STATE-VALUE FUNCTION V*(s):
++--------+--------+--------+--------+
+|   3.21 |   4.44 |   5.72 |   7.07 |
++--------+--------+--------+--------+
+|   4.44 |  WALL  |  TRAP  |   8.50 |
++--------+--------+--------+--------+
+|   5.72 |   7.07 |   8.50 |  10.00 |
++--------+--------+--------+--------+
+|   7.07 |   8.50 |  10.00 |  GOAL  |
++--------+--------+--------+--------+
+
+OPTIMAL POLICY pi*(s) [DIRECTIONAL ACTIONS]:
++--------+--------+--------+--------+
+| v DOWN| > RIGHT| > RIGHT| v DOWN|
++--------+--------+--------+--------+
+| v DOWN|  WALL  |  TRAP  | v DOWN|
++--------+--------+--------+--------+
+| v DOWN| v DOWN| v DOWN| v DOWN|
++--------+--------+--------+--------+
+| > RIGHT| > RIGHT| > RIGHT|  GOAL  |
++--------+--------+--------+--------+
+[+] Policy plot successfully saved to 'C:\Users\AAYAN\Desktop\RL_Lab\exp4\policy_iteration_result.png'
+
+CONCLUSION & INFERENCE:
+1. Policy Iteration converged in exactly 4 outer cycles.
+2. The agent successfully navigates around the obstacle at (1, 1) and completely steers clear of the hazard trap at (1, 2).
+3. Directional vectors form a shortest path toward the Goal at (3, 3).

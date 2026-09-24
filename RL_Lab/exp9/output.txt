@@ -1,0 +1,38 @@
+===========================================================================
+EXPERIMENT 9: Q-LEARNING ALGORITHM & COMPARISON WITH SARSA
+===========================================================================
+Training Q-Learning agent on Cliff Walking (500 episodes)...
+Training SARSA agent on Cliff Walking (500 episodes)...
+
+===========================================================================
+CLIFF WALKING PERFORMANCE COMPARISON (DETERMINISTIC EVALUATION):
+===========================================================================
+Metric                         | Q-Learning (Off-Policy) | SARSA (On-Policy)     
+---------------------------------------------------------------------------
+Test Reward                    | -13.0                  | -17.0                 
+Test Steps to Goal             | 13                     | 17                    
+Average Training Reward (Final 50) | -46.8                  | -22.8                 
+---------------------------------------------------------------------------
+
+TRAJECTORY DETAILS:
+Q-Learning Learned Path:
+(3, 0) -> (2, 0) -> (2, 1) -> (2, 2) -> (2, 3) -> (2, 4) -> (2, 5) -> (2, 6) -> (2, 7) -> (2, 8) -> (2, 9) -> (2, 10) -> (2, 11) -> (3, 11)
+Actions: UP -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> DOWN
+
+SARSA Learned Path:
+(3, 0) -> (2, 0) -> (1, 0) -> (0, 0) -> (0, 1) -> (0, 2) -> (0, 3) -> (0, 4) -> (0, 5) -> (0, 6) -> (0, 7) -> (0, 8) -> (0, 9) -> (0, 10) -> (0, 11) -> (1, 11) -> (2, 11) -> (3, 11)
+Actions: UP -> UP -> UP -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> RIGHT -> DOWN -> DOWN -> DOWN
+
+======================================================================
+TASK 2: BENCHMARK ON FROZENLAKE-v1 ENVIRONMENT
+======================================================================
+FrozenLake-v1 Success Rate over 100 Test Episodes:
+  Q-Learning: 77% Success
+  SARSA:      69% Success
+[+] Comparative plot successfully saved to 'C:\Users\AAYAN\Desktop\RL_Lab\exp9\q_learning_vs_sarsa.png'
+
+CONCLUSION & INFERENCE:
+1. Q-Learning learns the mathematically optimal policy directly along the cliff edge (13 steps, reward -13).
+2. However, during training with epsilon-greedy exploration, Q-Learning frequently falls into the cliff, resulting in lower online average rewards.
+3. SARSA learns a safer policy along the upper edge (17 steps, reward -17), avoiding exploration penalties and achieving higher online training return.
+4. This highlights the classic tradeoff: Off-policy (learns optimal greedy policy) vs On-policy (learns optimal exploratory policy).

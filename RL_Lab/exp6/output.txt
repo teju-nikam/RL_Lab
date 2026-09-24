@@ -1,0 +1,63 @@
+===========================================================================
+EXPERIMENT 6: MONTE CARLO PREDICTION AND CONTROL
+===========================================================================
+Running Part 1: Monte Carlo Prediction (5,000 episodes)...
+
+First-Visit MC Estimated V(s):
++--------+--------+--------+--------+
+| -13.66 | -12.88 | -11.75 | -11.28 |
++--------+--------+--------+--------+
+| -13.10 | -11.88 |  PIT   |  -8.50 |
++--------+--------+--------+--------+
+| -12.21 | -10.28 |  -6.92 |  -2.28 |
++--------+--------+--------+--------+
+| -11.44 |  -8.71 |  -2.53 |  GOAL  |
++--------+--------+--------+--------+
+
+Every-Visit MC Estimated V(s):
++--------+--------+--------+--------+
+| -13.65 | -12.98 | -11.83 | -11.34 |
++--------+--------+--------+--------+
+| -13.05 | -11.90 |  PIT   |  -8.65 |
++--------+--------+--------+--------+
+| -12.33 | -10.52 |  -6.81 |  -1.96 |
++--------+--------+--------+--------+
+| -11.73 |  -9.01 |  -2.17 |  GOAL  |
++--------+--------+--------+--------+
+
+Max difference between First-Visit and Every-Visit estimates: 0.3566
+
+Running Part 2: On-Policy First-Visit MC Control (10,000 episodes)...
+Episode  2000/10000 | Epsilon: 0.368 | Recent 100-Ep Return:  -0.28
+Episode  4000/10000 | Epsilon: 0.135 | Recent 100-Ep Return:   2.93
+Episode  6000/10000 | Epsilon: 0.050 | Recent 100-Ep Return:   3.87
+Episode  8000/10000 | Epsilon: 0.050 | Recent 100-Ep Return:   3.98
+Episode 10000/10000 | Epsilon: 0.050 | Recent 100-Ep Return:   4.18
+
+Optimal State-Value Function V*(s) (via MC Control):
++--------+--------+--------+--------+
+|   0.35 |  -3.70 |  -0.06 |   2.31 |
++--------+--------+--------+--------+
+|   2.02 |   0.06 |  PIT   |   6.14 |
++--------+--------+--------+--------+
+|   3.74 |   3.18 |   6.33 |   9.62 |
++--------+--------+--------+--------+
+|   5.42 |   7.42 |   9.73 |  GOAL  |
++--------+--------+--------+--------+
+
+OPTIMAL POLICY pi*(s) [DIRECTIONAL ACTIONS]:
++--------+--------+--------+--------+
+| v DOWN| > RIGHT| > RIGHT| v DOWN|
++--------+--------+--------+--------+
+| v DOWN| v DOWN|  PIT   | v DOWN|
++--------+--------+--------+--------+
+| v DOWN| > RIGHT| > RIGHT| v DOWN|
++--------+--------+--------+--------+
+| > RIGHT| > RIGHT| > RIGHT|  GOAL  |
++--------+--------+--------+--------+
+[+] Visualization plot saved to 'mc_prediction_control.png'
+
+CONCLUSION & INFERENCE:
+1. Monte Carlo methods learn entirely from simulated experience without model dynamics P(s'|s,a).
+2. First-visit and Every-visit MC prediction yield virtually identical asymptotic value estimates.
+3. MC Control successfully discovered the optimal path navigating around the hazard PIT to reach the GOAL.

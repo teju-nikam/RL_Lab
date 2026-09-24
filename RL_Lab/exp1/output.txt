@@ -1,0 +1,39 @@
+======================================================================
+EXPERIMENT 1: MULTI-ARMED BANDIT EXPLORATION VS EXPLOITATION
+======================================================================
+Number of Arms (k): 10
+Number of Independent Runs: 1000
+Steps per Run: 2000
+Strategies tested:
+  1. Greedy (eps=0.0)
+  2. eps-Greedy (eps=0.01)
+  3. eps-Greedy (eps=0.10)
+  4. Decaying eps (eps0=0.20)
+  5. UCB (c=2.0)
+----------------------------------------------------------------------
+Simulating run 1/1000...
+Simulating run 200/1000...
+Simulating run 400/1000...
+Simulating run 600/1000...
+Simulating run 800/1000...
+Simulating run 1000/1000...
+Simulation completed successfully!
+----------------------------------------------------------------------
+
+PERFORMANCE SUMMARY TABLE (Averaged over 1000 runs):
+Strategy                   | Avg Reward (Final 100) | Optimal Action % (Final)
+----------------------------------------------------------------------------
+Greedy (eps=0.0)           |         1.0267         |         36.70         %
+eps-Greedy (eps=0.01)      |         1.3945         |         70.32         %
+eps-Greedy (eps=0.10)      |         1.3585         |         83.09         %
+Decaying eps (eps0=0.20)   |         1.4661         |         85.50         %
+UCB (c=2.0)                |         1.4847         |         89.84         %
+----------------------------------------------------------------------------
+[+] Visualization plot successfully saved to 'C:\Users\AAYAN\Desktop\RL_Lab\exp1\bandit_comparison.png'
+
+CONCLUSION & INFERENCE:
+1. Pure Greedy (eps=0.0) gets stuck in sub-optimal actions very early, locking into ~35-40% optimal actions.
+2. eps-Greedy (eps=0.10) explores rapidly and finds the optimal arm faster, achieving high rewards quickly.
+3. eps-Greedy (eps=0.01) explores slowly, eventually outperforming eps=0.10 in the long run because it exploits 99% of the time.
+4. Decaying eps-Greedy bridges both regimes: fast initial exploration followed by near-complete exploitation.
+5. UCB (c=2.0) achieves top performance by using uncertainty-aware exploration bonuses based on visitation counts.
